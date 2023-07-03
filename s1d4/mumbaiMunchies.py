@@ -34,6 +34,7 @@ def addSnacks():
 
     list.append(newSnack)
     # price( "new Snack added Successfully:-  id= ", id "\n name= ",name+"\n price:- ", str(price) ,"\n availability:- ",availability)
+    print(newSnack)
 
 
 
@@ -66,4 +67,31 @@ def removeSnacks():
     if flag:
         print("Snacks Remove Successfully...")
     else:
-        print("Snacks not present in this Snacks id")            
+        print("Snacks not present in this Snacks id")
+
+
+def printList():
+   for i in list:
+      print(i)
+
+choice=1
+while choice!=0:
+    try:
+      choice=int(input("Enter your choice:- \n 1:- add snack. \n 2:- update Snack \n 3:- delete Snack \n 4:- display all Snacks \n   0:- for Exit"))
+      if choice==1:
+        addSnacks()
+      elif choice==2:
+        updateSnacks()
+      elif choice==3:
+        removeSnacks()   
+      elif choice==0:
+        print("Thanks Our Services")
+      elif choice==4:
+        printList();  
+      else:
+        print("Please enter valid Number") 
+    except Exception:
+       print("can not convert into Integer")
+       
+    
+
