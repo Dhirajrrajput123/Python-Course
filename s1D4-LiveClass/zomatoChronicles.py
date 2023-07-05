@@ -25,7 +25,7 @@ dish5=Dish(5,"Barger+chhiji",40,"yes")
 
 dishs=[]
 
-print(dish1.id)
+
 dishs.append(dish1)
 dishs.append(dish2)
 dishs.append(dish3)
@@ -154,7 +154,6 @@ while choice!=0:
        
        if choice==1:
            addDish()
-           print("hello")
        elif choice==2:
            removeDish()
        elif choice==3:
