@@ -1,0 +1,32 @@
+<div>
+         <h1>Orders</h1>
+    <table class="orders-table">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Status</th>
+        </tr>
+        {% for order in ordersList %}
+        <tr>
+            <td>{{ order.oId }}</td>
+            <td>{{ order.cName }}</td>
+            <td>{{ order.status }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+        <h1>place Order</h1>
+    <form action="/orders" method="post" >
+        <label for="name">ProductId:</label>
+        <input type="text"  name="pid" required value="1 2 ">
+
+        <label for="price">UserName:</label>
+        <input type="text"  name="cName" required>
+
+
+
+        <button type="submit">place Order</button>
+    </form>
+
+    </div>

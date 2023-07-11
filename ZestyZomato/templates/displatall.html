@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div id="cont">
+<div>
+    <h1>Product Display</h1>
+    <table class="menu-table">
+        <tr>
+            <th>Dish ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Availability</th>
+        </tr>
+        {% for item in list %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.availability }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+ <h1>Add Product</h1>
+    <form action="/products" method="post" >
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" required>
+
+        <label for="availability">Availability:</label>
+        <input type="text" id="availability" name="availability">
+
+        <button type="submit">Add Product</button>
+    </form>
+    </div>
+
+    </div>
+</body>
+</html>
