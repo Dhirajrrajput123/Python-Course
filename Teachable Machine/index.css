@@ -1,0 +1,57 @@
+body{
+    background-color: rgb(198, 253, 253);
+}
+
+h1{
+    color: rgb(46, 44, 44);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold
+}
+
+div{
+    color:rgb(7, 98, 121);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    height: 50px;
+    background-color: aliceblue;
+    /* width: 50%; */
+    /* text-align: left; */
+}
+
+.plan{
+    text-align: right;
+    margin-right: 40px;
+    color: rgb(237, 117, 117);
+    /* border: 2px solid    black; */
+    margin-top: 17px;
+}
+
+.navicon{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}
+
+.start{
+    text-align: center;
+    /* border: 2px solid black; */
+    padding: 10px 30px;
+    border-radius: 10px;
+    margin-left: 45%;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.content{
+    font-size: 20px;
+    color: rgb(163, 64, 255);
+    text-align: center;
+}
+
+.webcamm{
+    text-align: center;
+    height: 300px;
+}
