@@ -93,13 +93,23 @@ def addProduct(pId):
             return jsonify({'message': 'Product updated successfully'})
     return jsonify({'message': 'product not present in this product id'})
 
+@app.route('/product/update/<int:pId>',methods=['GET'])
+def updateprodu(pId):
+    for i in list:
+        if i.id == pId:
+            if i.availability=='yes':
+                i.availability='no'
+            else:
+                i.availability='yes'
+            return render_template('displatall.html', list=list )
+    return jsonify({'message': 'product not present int this id'})
 
-@app.route('/products/<int:pId>', methods=['DELETE'])
+@app.route('/products/delete/<int:pId>', methods=['GET'])
 def deleteProduct(pId):
     for i in list:
         if i.id == pId:
             list.remove(i)
-            return jsonify({'message': 'Product deleted successfullt'})
+            return render_template('displatall.html', list=list )
     return jsonify({'message': 'product not present int this id'})
 
 
@@ -161,15 +171,19 @@ def getOrders():
     return render_template('order.html', ordersList=ordersList )
 
 
-@app.route('/orders/<int:oId>', methods=['PUT'])
+@app.route('/orders/update/<int:oId>', methods=['GET'])
 def updateOrder(oId):
-    status = request.json['status']
+    # status = request.json['status']
 
     for i in ordersList:
         if i.oId == oId:
-            i.status = status
-            return jsonify(
-                {'orderid': oId, 'Customer name': i.cName, 'status': status, 'message': 'order status Change'})
+            if i.status=="received":
+                i.status="preparing"
+            elif i.status=="preparing":
+                i.status="delivered"
+            else:
+                i.status="delivered"
+            return render_template('order.html', ordersList=ordersList )
 
     return jsonify({'message': 'Invalid Order Id'})
 

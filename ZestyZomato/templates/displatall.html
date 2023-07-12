@@ -14,6 +14,8 @@
             <th>Name</th>
             <th>Price</th>
             <th>Availability</th>
+             <th>Update</th>
+             <th>Delete</th>
         </tr>
         {% for item in list %}
         <tr>
@@ -21,6 +23,8 @@
             <td>{{ item.name }}</td>
             <td>{{ item.price }}</td>
             <td>{{ item.availability }}</td>
+            <td> <button  onclick="window.location.href='/product/update/{{ item.id }}';">Update</button></td>
+            <td><button onclick="window.location.href='/products/delete/{{ item.id }}';">Delete</button></td>
         </tr>
         {% endfor %}
     </table>

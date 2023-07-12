@@ -20,6 +20,7 @@ def get_weather(city):
     if city in weather_data:
         return jsonify(weather_data[city]), 200
     else:
+        print("hello inside else")
         return jsonify({'error': 'City not found'}), 404
 
 

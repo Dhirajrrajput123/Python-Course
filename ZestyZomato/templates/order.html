@@ -11,6 +11,7 @@
             <td>{{ order.oId }}</td>
             <td>{{ order.cName }}</td>
             <td>{{ order.status }}</td>
+            <td><button onclick="window.location.href='/orders/update/{{ order.oId }}';">Update</button></td>
         </tr>
         {% endfor %}
     </table>

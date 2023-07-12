@@ -1,0 +1,152 @@
+MongoBd Query:-
++++++++++++++++++++++++++++++++++Set-1+++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++Set-completed++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++Set-2+++++++++++++++++++++++++++++++++++++++
+Database name :- s3D2
+
+Documents:- {
+  "_id": ObjectId(), 
+  "name": String,
+  "cuisine_type": String,
+  "location": String,
+  "average_rating": Number,
+  "delivery_available": Boolean
+}
+
+
+
+
+Query:- check Databases:--  show dbs
+
+Query:-  use Database:- use databaseName
+
+Query:-  COllection Name:-  Restaurants
+
+Query:- Get all Collection :--db.getCollectionNames()
+
+Query:--    db.createCollection("Rides")
+
+Query:- Insert ONe Data:-  db.Restaurants.insertOne({ "id": 1, "name": "A", "cuisine_type": "AS", "Location": "Delhi", "average_rating": 4.3, "delivery_available": true })
+
+Query:- find All Documents:-- db.Restaurants.find()
+
+Query:- retrieve All Document in  sorted Order:-   
+descending order:-  db.Restaurants.find().sort({average_rating:-1})
+Ascending Order:-  db.Restaurants.find().sort({average_rating:1})
+
+Query:- retrive Document which have rating >4 and status true:-
+   db.Restaurants.find({$and:[{average_rating:{$gt:4}},{delivery_available:true}]})
+
+Query:- restaurants where the cuisine_type field is not set or is null.
+
+db.Restaurants.find({$or:[{cuisine_type:{$exists:false}},{cuisine_type:{$eq:null}}]})
+
+Query:- Update Documents:--   db.Restaurants.updateOne({id:5},{$set:{delivery_available:false}})
+
+Query:-  Count the documents with condition:--  db.Restaurants.countDocuments({delivery_available:true})
+
+Query:-  retrive Documents which is locati in Delhi:---  db.Restaurants.find({Location:'Delhi'})
+
+Query:- calculate the average average_rating of all restaurants.:-    
+
+ db.Restaurants.aggregate([{$group: {_id:null,avgField:{$avg:'$average_rating'}}}])
+
+Query:- delete the documents which id=3:--  db.Restaurants.deleteOne({id:3})
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++Set-2 Completed+++++++++++++++++++
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++Set-3+++++++++++++++++++++++++++++
+
+{
+  "_id": ObjectId(),
+  "driver_id": ObjectId(),
+  "passenger_id": ObjectId(),
+  "start_location": String,
+  "end_location": String,
+  "distance": Number,
+  "ride_time": Number,
+  "fare": Number
+}
+
+s2D3> db.Rides.insertOne({ "id": 2, "driver_id": 2, "passenger_id": 5, "start_location": "noida","end_location":"Pari Chauck", "distance": 20, "ride_time": 30,"fare":1000 })
+{
+  acknowledged: true,
+  insertedId: ObjectId("64ae2605814fc3f09117a108")
+}
+s2D3> db.Rides.insertOne({ "id": 3, "driver_id": 3, "passenger_id": 7, "start_location": "alfaII","end_location":"Pari Chauck", "distance": 25, "ride_time": 40,"fare":1500 })
+{
+  acknowledged: true,
+  insertedId: ObjectId("64ae2638814fc3f09117a109")
+}
+s2D3> db.Rides.insertOne({ "id": 4, "driver_id": 5, "passenger_id": 9, "start_location": "Pari Chauck","end_location":"Chauck", "distance": 35, "ride_time": 55,"fare":2000 })
+{
+  acknowledged: true,
+  insertedId: ObjectId("64ae2682814fc3f09117a10a")
+}
+s2D3> db.Rides.insertOne({ "id": 5, "driver_id": 5, "passenger_id": 10, "start_location": "Delhi","end_location":"Chauck", "distance": 45, "ride_time": 60,"fare":2500 })
+{
+  acknowledged: true,
+  insertedId: ObjectId("64ae26bb814fc3f09117a10b")
+}
+
+
+Query:-  Write query sort fare:--   db.Rides.find().sort({fare:-1})
+
+Query:-   find the sum of distance and fare:-   
+db.Rides.aggregate([{$group:{ _id:null,totalDistance:{$sum:'$distance'},totalFare:{$sum:'$fare'}}}])
+
+Query:-   find the average Ride time of all the Documents:-db.Rides.aggregate([{$group:{_id:null,averageTime:{$avg:'$ride_time'}}}])
+
+Query:-   Write a query to fetch all rides whose start_location or end_location contains 'chauck'.
+    db.Rides.find({$or:[{start_location:{$regex:/^chauck/i}},{end_location:{$regex:/^chauck/i}}]})
+
+Query:-  count driver_id :- db.Rides.countDocuments({driver_id:5})
+ 
+Query:-   update Fare:-- db.Rides.updateOne({id:5},{$set:{fare:2999}})
+
+Query:-   calculate the total sum for each driver_id:- 
+db.Rides.aggregate([{$group:{_id:'$driver_id',totalFare:{$sum:'$fare'}}}])
+[
+  { _id: 5, totalFare: 4999 },
+  { _id: 3, totalFare: 1500 },
+  { _id: 2, totalFare: 1000 },
+  { _id: 1, totalFare: 3000 }
+]
+
+Query:-  Delete One Document with id =1   
+   db.Rides.deleteOne({id:1})
+{ acknowledged: true, deletedCount: 1 }
+s2D3> db.Rides.aggregate([{$group:{_id:'$driver_id',totalFare:{$sum:'$fare'}}}])
+[
+  { _id: 3, totalFare: 1500 },
+  { _id: 2, totalFare: 1000 },
+  { _id: 5, totalFare: 4999 }
+]
+
+Query:-  
+
+Query:-  
+
+Query:-  
+
+Query:-  
+
+Query:-  
+
+Query:-  
+
+Query:-  
+
+Query:-  
+
+Query:-   
+
+
+
+
+
+
+
+
